@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		56593CC8B9E12F66B7BC75D7 /* ofxMetalRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 471E8C79BC1B61D1711B7867 /* ofxMetalRenderer.mm */; };
+		56593CC8B9E12F66B7BC75D7 /* ofxMetalTestRenderer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 471E8C79BC1B61D1711B7867 /* ofxMetalTestRenderer.mm */; };
 		6B5885BA574172D67EEBF138 /* ofxMetalTexture.mm in Sources */ = {isa = PBXBuildFile; fileRef = A0331C319B2F2633AF2AFB58 /* ofxMetalTexture.mm */; };
 		709B69B92277DE0A006BEBF8 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 709B69B62277DE0A006BEBF8 /* main.mm */; };
-		709B69BA2277DE0A006BEBF8 /* AAPLShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 709B69B72277DE0A006BEBF8 /* AAPLShaders.metal */; };
 		709B69BD2277DE21006BEBF8 /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709B69BC2277DE21006BEBF8 /* MetalKit.framework */; };
 		709B69BF2277DE29006BEBF8 /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 709B69BE2277DE29006BEBF8 /* Metal.framework */; };
+		709B69C52277E09D006BEBF8 /* AAPLShaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 709B69C42277E09D006BEBF8 /* AAPLShaders.metal */; };
 		B2F06B7139C6E6818B3EAD33 /* ofxMetalDevice.mm in Sources */ = {isa = PBXBuildFile; fileRef = F2C322F72045A9CF68B6B7B9 /* ofxMetalDevice.mm */; };
 		E647182CF424024F36F4FAD0 /* AAPLMathUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = 75B23417A6A7CE2451E1F5A3 /* AAPLMathUtilities.m */; };
 /* End PBXBuildFile section */
@@ -31,15 +31,15 @@
 
 /* Begin PBXFileReference section */
 		23E4174E7220BCF8DC1D7DB6 /* AAPLMathUtilities.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = AAPLMathUtilities.h; path = ../../../addons/ofxMetal/libs/AAPLMathUtilities.h; sourceTree = SOURCE_ROOT; };
-		2A6413330CEFE2B930D7BD7B /* ofxMetalRenderer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxMetalRenderer.h; path = ../../../addons/ofxMetal/src/ofxMetalRenderer.h; sourceTree = SOURCE_ROOT; };
-		471E8C79BC1B61D1711B7867 /* ofxMetalRenderer.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = ofxMetalRenderer.mm; path = ../../../addons/ofxMetal/src/ofxMetalRenderer.mm; sourceTree = SOURCE_ROOT; };
+		2A6413330CEFE2B930D7BD7B /* ofxMetalTestRenderer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxMetalTestRenderer.h; path = ../src/ofxMetalTestRenderer.h; sourceTree = SOURCE_ROOT; };
+		471E8C79BC1B61D1711B7867 /* ofxMetalTestRenderer.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = ofxMetalTestRenderer.mm; path = ../src/ofxMetalTestRenderer.mm; sourceTree = SOURCE_ROOT; };
 		4A399D320E68CE28B271A495 /* ofxMetal.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxMetal.h; path = ../../../addons/ofxMetal/src/ofxMetal.h; sourceTree = SOURCE_ROOT; };
 		4CD51AAD09ED0E0CBA13F1A2 /* ofxMetalDevice.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxMetalDevice.h; path = ../../../addons/ofxMetal/src/ofxMetalDevice.h; sourceTree = SOURCE_ROOT; };
 		709B69B62277DE0A006BEBF8 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
-		709B69B72277DE0A006BEBF8 /* AAPLShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = AAPLShaders.metal; sourceTree = "<group>"; };
-		709B69B82277DE0A006BEBF8 /* AAPLShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAPLShaderTypes.h; sourceTree = "<group>"; };
 		709B69BC2277DE21006BEBF8 /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		709B69BE2277DE29006BEBF8 /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		709B69C32277E09D006BEBF8 /* AAPLShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AAPLShaderTypes.h; path = ../libs/AAPLShaderTypes.h; sourceTree = "<group>"; };
+		709B69C42277E09D006BEBF8 /* AAPLShaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; name = AAPLShaders.metal; path = ../libs/AAPLShaders.metal; sourceTree = "<group>"; };
 		75B23417A6A7CE2451E1F5A3 /* AAPLMathUtilities.m */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = AAPLMathUtilities.m; path = ../../../addons/ofxMetal/libs/AAPLMathUtilities.m; sourceTree = SOURCE_ROOT; };
 		76B898E0D8511C07C191B8EA /* ofxMetalTexture.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = ofxMetalTexture.h; path = ../../../addons/ofxMetal/src/ofxMetalTexture.h; sourceTree = SOURCE_ROOT; };
 		A0331C319B2F2633AF2AFB58 /* ofxMetalTexture.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = ofxMetalTexture.mm; path = ../../../addons/ofxMetal/src/ofxMetalTexture.mm; sourceTree = SOURCE_ROOT; };
@@ -278,8 +278,8 @@
 				FD2582442F3C1C3AB1E4015B /* ofxMetalConstants.h */,
 				4CD51AAD09ED0E0CBA13F1A2 /* ofxMetalDevice.h */,
 				F2C322F72045A9CF68B6B7B9 /* ofxMetalDevice.mm */,
-				2A6413330CEFE2B930D7BD7B /* ofxMetalRenderer.h */,
-				471E8C79BC1B61D1711B7867 /* ofxMetalRenderer.mm */,
+				2A6413330CEFE2B930D7BD7B /* ofxMetalTestRenderer.h */,
+				471E8C79BC1B61D1711B7867 /* ofxMetalTestRenderer.mm */,
 				76B898E0D8511C07C191B8EA /* ofxMetalTexture.h */,
 				A0331C319B2F2633AF2AFB58 /* ofxMetalTexture.mm */,
 			);
@@ -586,8 +586,6 @@
 			isa = PBXGroup;
 			children = (
 				709B69B62277DE0A006BEBF8 /* main.mm */,
-				709B69B72277DE0A006BEBF8 /* AAPLShaders.metal */,
-				709B69B82277DE0A006BEBF8 /* AAPLShaderTypes.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -595,6 +593,8 @@
 		E68FDA3155410290DD185CBB /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				709B69C42277E09D006BEBF8 /* AAPLShaders.metal */,
+				709B69C32277E09D006BEBF8 /* AAPLShaderTypes.h */,
 				23E4174E7220BCF8DC1D7DB6 /* AAPLMathUtilities.h */,
 				75B23417A6A7CE2451E1F5A3 /* AAPLMathUtilities.m */,
 			);
@@ -699,10 +699,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				709B69BA2277DE0A006BEBF8 /* AAPLShaders.metal in Sources */,
+				709B69C52277E09D006BEBF8 /* AAPLShaders.metal in Sources */,
 				E647182CF424024F36F4FAD0 /* AAPLMathUtilities.m in Sources */,
 				B2F06B7139C6E6818B3EAD33 /* ofxMetalDevice.mm in Sources */,
-				56593CC8B9E12F66B7BC75D7 /* ofxMetalRenderer.mm in Sources */,
+				56593CC8B9E12F66B7BC75D7 /* ofxMetalTestRenderer.mm in Sources */,
 				6B5885BA574172D67EEBF138 /* ofxMetalTexture.mm in Sources */,
 				709B69B92277DE0A006BEBF8 /* main.mm in Sources */,
 			);

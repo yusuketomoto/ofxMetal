@@ -5,7 +5,7 @@ class ofApp : public ofBaseApp {
 
     ofxMetal::Device device;
     ofxMetal::Texture texture;
-    ofxMetal::Renderer renderer;
+    ofxMetal::TestRenderer renderer;
     ofEasyCam ecam;
     ofMesh mesh;
 

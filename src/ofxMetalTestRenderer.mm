@@ -1,4 +1,4 @@
-#include "ofxMetalRenderer.h"
+#include "ofxMetalTestRenderer.h"
 #include "ofMain.h"
 #include <MetalKit/MetalKit.h>
 
@@ -13,7 +13,7 @@
 namespace ofx {
 namespace Metal {
 
-void Renderer::setup(Device *device, MTLPixelFormat mtlPixelFormat)
+void TestRenderer::setup(Device *device, MTLPixelFormat mtlPixelFormat)
 {
     id<MTLDevice> _device = device->getDevice();
     
@@ -98,14 +98,14 @@ void Renderer::setup(Device *device, MTLPixelFormat mtlPixelFormat)
     ofLog() << "setup renderer okay";
 }
 
-void Renderer::drawToTexture(Texture &texture)
+void TestRenderer::drawToTexture(Texture &texture)
 {
     _size = CGSizeMake(texture.getWidth(), texture.getHeight());
     id<MTLCommandBuffer> commandBuffer = drawToMetalTexture(texture.getMetalTexture());
     [commandBuffer commit];
 }
 
-id<MTLCommandBuffer> Renderer::drawToMetalTexture(id<MTLTexture> texture)
+id<MTLCommandBuffer> TestRenderer::drawToMetalTexture(id<MTLTexture> texture)
 {
     dispatch_semaphore_wait(_inFlightSemaphore, DISPATCH_TIME_FOREVER);
     
@@ -167,7 +167,7 @@ id<MTLCommandBuffer> Renderer::drawToMetalTexture(id<MTLTexture> texture)
     return commandBuffer;
 }
 
-void Renderer::updateState()
+void TestRenderer::updateState()
 {
     float aspect = (float)_size.width / _size.height;
     _projectionMatrix = matrix_perspective_right_hand(1, aspect, .1, 5.0);

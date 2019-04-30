@@ -6,7 +6,7 @@
 namespace ofx {
 namespace Metal {
 
-class Renderer
+class TestRenderer
 {
 public:
     void setup(Device* device, MTLPixelFormat mtlPixelFormat);

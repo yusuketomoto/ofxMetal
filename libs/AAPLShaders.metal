@@ -44,7 +44,6 @@ fragment float4 fragmentShader(ColorInOut      in       [[stage_in]],
     const half4 labelColor = labelMap.sample (linearSampler, in.texCoord.xy);
 
     const half4 outputColor = (baseColor * (1.0 - labelColor.w)) + (labelColor * labelColor.w);
-//    const half4 outputColor = half4(0.5, 0.5, 0.0, 1.0);
     return float4(outputColor);
 }
 
