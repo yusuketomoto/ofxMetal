@@ -162,7 +162,7 @@ id<MTLCommandBuffer> TestRenderer::drawToMetalTexture(id<MTLTexture> texture)
 
 void TestRenderer::updateState()
 {
-    float aspect = (float)_size.width / _size.height;
+    float aspect = (float)size.width / size.height;
     _projectionMatrix = matrix_perspective_right_hand(1, aspect, .1, 5.0);
     
     

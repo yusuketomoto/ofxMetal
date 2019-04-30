@@ -16,7 +16,7 @@ protected:
     virtual id<MTLCommandBuffer> drawToMetalTexture(id<MTLTexture> texture) = 0;
     
 protected:
-    CGSize _size;
+    CGSize size;
 };
 
 } // Metal
