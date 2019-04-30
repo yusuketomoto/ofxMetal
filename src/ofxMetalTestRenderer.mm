@@ -98,13 +98,6 @@ void TestRenderer::setup(Device *device, MTLPixelFormat mtlPixelFormat)
     ofLog() << "setup renderer okay";
 }
 
-void TestRenderer::drawToTexture(Texture &texture)
-{
-    _size = CGSizeMake(texture.getWidth(), texture.getHeight());
-    id<MTLCommandBuffer> commandBuffer = drawToMetalTexture(texture.getMetalTexture());
-    [commandBuffer commit];
-}
-
 id<MTLCommandBuffer> TestRenderer::drawToMetalTexture(id<MTLTexture> texture)
 {
     dispatch_semaphore_wait(_inFlightSemaphore, DISPATCH_TIME_FOREVER);

@@ -2,18 +2,18 @@
 
 #include "ofxMetalDevice.h"
 #include "ofxMetalTexture.h"
+#include "ofxMetalRenderer.h"
 
 namespace ofx {
 namespace Metal {
 
-class TestRenderer
+class TestRenderer : public RendererBase
 {
 public:
-    void setup(Device* device, MTLPixelFormat mtlPixelFormat);
-    void drawToTexture(Texture& texture);
+    virtual void setup(Device* device, MTLPixelFormat mtlPixelFormat) override;
     
 protected:
-    virtual id<MTLCommandBuffer> drawToMetalTexture(id<MTLTexture> texture);
+    virtual id<MTLCommandBuffer> drawToMetalTexture(id<MTLTexture> texture) override;
     void updateState();
     
 protected:
@@ -33,7 +33,6 @@ protected:
     float _rotationIncrement;
     MTLRenderPassDescriptor *_renderPassDescriptor;
     
-    CGSize _size;
 };
 
 } // Metal
