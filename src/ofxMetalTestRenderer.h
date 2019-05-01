@@ -1,5 +1,6 @@
 #pragma once
 
+#include <simd/simd.h>
 #include "ofxMetalDevice.h"
 #include "ofxMetalTexture.h"
 #include "ofxMetalRenderer.h"

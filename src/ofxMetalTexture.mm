@@ -1,5 +1,10 @@
 #include "ofxMetalTexture.h"
 
+
+#if TARGET_OS_IOS
+#define GL_UNSIGNED_INT_8_8_8_8_REV 0x8367
+#endif
+
 namespace ofx {
 namespace Metal {
 
@@ -9,7 +14,7 @@ static const AAPLTextureFormatInfo AAPLInteropFormatTable[] =
 {
     // Core Video Pixel Format,               Metal Pixel Format,            GL internalformat, GL format,   GL type
     { kCVPixelFormatType_32BGRA,              MTLPixelFormatBGRA8Unorm,      GL_RGBA,           GL_BGRA_EXT, GL_UNSIGNED_INT_8_8_8_8_REV },
-#if TARGET_IOS
+#if TARGET_OS_IOS
     { kCVPixelFormatType_32BGRA,              MTLPixelFormatBGRA8Unorm_sRGB, GL_RGBA,           GL_BGRA_EXT, GL_UNSIGNED_INT_8_8_8_8_REV },
 #else
     { kCVPixelFormatType_ARGB2101010LEPacked, MTLPixelFormatBGR10A2Unorm,    GL_RGB10_A2,       GL_BGRA,     GL_UNSIGNED_INT_2_10_10_10_REV },
@@ -105,6 +110,7 @@ float Texture::getHeight() const
     return texture.getHeight();
 }
 
+#ifdef TARGET_OSX
 void Texture::createGLTexture()
 {
     CVReturn cvret;
@@ -173,7 +179,17 @@ void Texture::createMetalTexture()
         return NO;
     }    
 }
+#else
+void Texture::createGLTexture()
+{
 
+}
+
+void Texture::createMetalTexture()
+{
+    
+}
+#endif
     
 } // Metal
 } // ofx

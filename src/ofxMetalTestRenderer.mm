@@ -2,10 +2,6 @@
 #include "ofMain.h"
 #include <MetalKit/MetalKit.h>
 
-#if TARGET_IOS
-#define GL_UNSIGNED_INT_8_8_8_8_REV 0x8367
-#endif
-
 #import "AAPLShaderTypes.h"
 #import "AAPLMathUtilities.h"
 
