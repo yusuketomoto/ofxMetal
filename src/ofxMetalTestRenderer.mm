@@ -90,8 +90,8 @@ void TestRenderer::setup(Device *device, MTLPixelFormat mtlPixelFormat)
     if(!_baseMap || error)
     {
         NSLog(@"Error loading Metal texture from file: %@", error.localizedDescription);
-    }
-    ofLog() << "setup renderer okay";
+    }    
+    _currentBufferIndex = 0;
 }
 
 id<MTLCommandBuffer> TestRenderer::drawToMetalTexture(id<MTLTexture> texture)

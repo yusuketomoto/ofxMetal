@@ -1,5 +1,5 @@
 #include "ofxMetalTexture.h"
-
+#include "ofxiOS.h"
 
 #if TARGET_OS_IOS
 #define GL_UNSIGNED_INT_8_8_8_8_REV 0x8367
@@ -51,7 +51,14 @@ void Texture::allocate(Device* devicePtr, int width, int height, MTLPixelFormat 
     openGLContext = (NSOpenGLContext*)ofGetWindowPtr()->getNSGLContext();
     cglPixelFormat = openGLContext.pixelFormat.CGLPixelFormatObj;
 #else
-    // TODO: implement here for iOS
+    auto window = (ofAppiOSWindow*)ofGetWindowPtr();
+    auto settings = window->getSettings();
+    if (settings.windowControllerType == METAL_KIT || settings.windowControllerType == GL_KIT) {
+        openGLContext = [[ofxiOSGLKView getInstance] context];
+    }
+    else {
+        openGLContext = [[ofxiOSEAGLView getInstance] context];
+    }
 #endif
     
     NSDictionary* cvBufferProperties = @{
@@ -73,6 +80,9 @@ void Texture::allocate(Device* devicePtr, int width, int height, MTLPixelFormat 
     
     texture.allocate(width, height, GL_RGBA);
     texture.setUseExternalTextureID(openGLTexture);
+    
+    texture.setTextureMinMagFilter(GL_LINEAR, GL_LINEAR);
+    texture.setTextureWrap(GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE);
 }
 
 void Texture::draw(float x, float y, float width, float height)
@@ -141,7 +151,41 @@ void Texture::createGLTexture()
     // 3. Get an OpenGL texture name from the CVPixelBuffer-backed OpenGL texture image.
     openGLTexture = CVOpenGLTextureGetName(cvGLTexture);
 }
-
+#else
+void Texture::createGLTexture()
+{
+    CVReturn cvret;
+    // 1. Create an OpenGL ES CoreVideo texture cache from the pixel buffer.
+    cvret = CVOpenGLESTextureCacheCreate(kCFAllocatorDefault,
+                                         nil,
+                                         openGLContext,
+                                         nil,
+                                         &cvGLTextureCache);
+    if(cvret != kCVReturnSuccess)
+    {
+        assert(!"Failed to create OpenGL ES Texture Cache");
+    }
+    // 2. Create a CVPixelBuffer-backed OpenGL ES texture image from the texture cache.
+    cvret = CVOpenGLESTextureCacheCreateTextureFromImage(kCFAllocatorDefault,
+                                                         cvGLTextureCache,
+                                                         cvPixelBuffer,
+                                                         nil,
+                                                         GL_TEXTURE_2D,
+                                                         formatInfo->glInternalFormat,
+                                                         size.width, size.height,
+                                                         formatInfo->glFormat,
+                                                         formatInfo->glType,
+                                                         0,
+                                                         &cvGLTexture);
+    if(cvret != kCVReturnSuccess)
+    {
+        assert(!"Failed to create OpenGL ES Texture From Image");
+    }
+    // 3. Get an OpenGL ES texture name from the CVPixelBuffer-backed OpenGL ES texture image.
+    openGLTexture = CVOpenGLESTextureGetName(cvGLTexture);
+}
+#endif
+ 
 void Texture::createMetalTexture()
 {
     CVReturn cvret;
@@ -154,7 +198,6 @@ void Texture::createMetalTexture()
     if(cvret != kCVReturnSuccess)
     {
         ofLog() << "fail CVMetalTextureCacheCreate";
-        return NO;
     }
     // 2. Create a CoreVideo pixel buffer backed Metal texture image from the texture cache.
     cvret = CVMetalTextureCacheCreateTextureFromImage(
@@ -168,7 +211,6 @@ void Texture::createMetalTexture()
     if(cvret != kCVReturnSuccess)
     {
         assert(!"Failed to create Metal texture cache");
-        return NO;
     }
     // 3. Get a Metal texture using the CoreVideo Metal texture reference.
     metalTexture = CVMetalTextureGetTexture(cvMtlTexture);
@@ -176,20 +218,8 @@ void Texture::createMetalTexture()
     if(!metalTexture)
     {
         assert(!"Failed to get metal texture from CVMetalTextureRef");
-        return NO;
-    }    
-}
-#else
-void Texture::createGLTexture()
-{
-
+    }
 }
 
-void Texture::createMetalTexture()
-{
-    
-}
-#endif
-    
 } // Metal
 } // ofx

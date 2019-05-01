@@ -40,11 +40,10 @@ protected:
     CVOpenGLTextureCacheRef cvGLTextureCache;
     CVOpenGLTextureRef cvGLTexture;
     CGLPixelFormatObj cglPixelFormat;
-    //#else // if!(TARGET_IOS || TARGET_TVOS)
-#else if(TARGET_IOS || TARGET_TVOS)
+#else if TARGET_OS_IOS
     CVOpenGLESTextureRef cvGLTexture;
     CVOpenGLESTextureCacheRef cvGLTextureCache;
-#endif // !(TARGET_IOS || TARGET_TVOS)
+#endif
     
     CVMetalTextureCacheRef cvMtlTextureCache;
     CGSize size;
