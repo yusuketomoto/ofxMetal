@@ -3,7 +3,6 @@
 
 class ofApp : public ofBaseApp {
 
-    ofxMetal::Device device;
     ofxMetal::Texture texture;
     ofxMetal::TestRenderer renderer;
     ofEasyCam ecam;
@@ -16,9 +15,8 @@ public:
         ofSetVerticalSync(true);
         
         MTLPixelFormat pixelFormat = MTLPixelFormatBGRA8Unorm;
-        device.setup();
-        texture.allocate(&device, ofGetWidth(), ofGetHeight(), pixelFormat);
-        renderer.setup(&device, pixelFormat);
+        texture.allocate(ofGetWidth(), ofGetHeight(), pixelFormat);
+        renderer.setup(pixelFormat);
         
         mesh = ofBoxPrimitive(128, 72, 128).getMesh();
         for (auto& tc: mesh.getTexCoords()) {
