@@ -9,7 +9,7 @@ namespace Metal {
 class Texture
 {
 public:
-    void allocate(Device* devicePtr, int width, int height, MTLPixelFormat mtlPixelFormat);
+    void allocate(int width, int height, MTLPixelFormat mtlPixelFormat);
     
     void draw(float x, float y, float width = ofGetWidth(), float height = ofGetHeight());
 

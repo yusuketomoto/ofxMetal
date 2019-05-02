@@ -1,7 +1,6 @@
 #pragma once
 
 #include <simd/simd.h>
-#include "ofxMetalDevice.h"
 #include "ofxMetalTexture.h"
 #include "ofxMetalRenderer.h"
 
@@ -11,7 +10,7 @@ namespace Metal {
 class TestRenderer : public RendererBase
 {
 public:
-    virtual void setup(Device* device, MTLPixelFormat mtlPixelFormat) override;
+    virtual void setup(MTLPixelFormat mtlPixelFormat) override;
     
 protected:
     virtual id<MTLCommandBuffer> drawToMetalTexture(id<MTLTexture> texture) override;

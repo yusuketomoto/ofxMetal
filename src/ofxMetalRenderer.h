@@ -1,6 +1,5 @@
 #pragma once
 
-#include "ofxMetalDevice.h"
 #include "ofxMetalTexture.h"
 
 namespace ofx {
@@ -9,7 +8,7 @@ namespace Metal {
 class RendererBase
 {
 public:
-    virtual void setup(Device* device, MTLPixelFormat mtlPixelFormat);
+    virtual void setup(MTLPixelFormat mtlPixelFormat);
     void drawToTexture(Texture& texture);
     
 protected:

@@ -4,7 +4,6 @@
 
 class ofApp : public ofxiOSApp {
     
-    ofxMetal::Device device;
     ofxMetal::Texture texture;
     ofxMetal::TestRenderer renderer;
     ofEasyCam ecam;
@@ -21,9 +20,8 @@ public:
         float w = ofGetWidth();
         float h = ofGetHeight();
         MTLPixelFormat pixelFormat = MTLPixelFormatBGRA8Unorm;
-        device.setup();
-        texture.allocate(&device, w, h, pixelFormat);
-        renderer.setup(&device, pixelFormat);
+        texture.allocate(w, h, pixelFormat);
+        renderer.setup(pixelFormat);
         
         mesh = ofBoxPrimitive(w * 0.1, h * 0.1, std::min(w, h) * 0.1).getMesh();
     }

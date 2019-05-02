@@ -36,13 +36,9 @@ const AAPLTextureFormatInfo *const textureFormatInfoFromMetalPixelFormat(MTLPixe
 }
 
 
-void Texture::allocate(Device* devicePtr, int width, int height, MTLPixelFormat mtlPixelFormat)
+void Texture::allocate(int width, int height, MTLPixelFormat mtlPixelFormat)
 {
-    if (!devicePtr)
-    {
-        ofLogError("ofxMetal::Texture::allocate") << "devicePtr is nullptr";
-    }
-    device = devicePtr->getDevice();
+    device = Device::defaultDevice();
 
     size = CGSizeMake(width, height);
     formatInfo = textureFormatInfoFromMetalPixelFormat(mtlPixelFormat);

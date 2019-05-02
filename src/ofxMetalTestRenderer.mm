@@ -2,6 +2,7 @@
 #include "ofMain.h"
 #include <MetalKit/MetalKit.h>
 
+#include "ofxMetalDevice.h"
 #import "AAPLShaderTypes.h"
 #import "AAPLMathUtilities.h"
 
@@ -9,9 +10,9 @@
 namespace ofx {
 namespace Metal {
 
-void TestRenderer::setup(Device *device, MTLPixelFormat mtlPixelFormat)
+void TestRenderer::setup(MTLPixelFormat mtlPixelFormat)
 {
-    id<MTLDevice> _device = device->getDevice();
+    id<MTLDevice> _device = Device::defaultDevice();
     
     _inFlightSemaphore = dispatch_semaphore_create(AAPLMaxBuffersInFlight);
     

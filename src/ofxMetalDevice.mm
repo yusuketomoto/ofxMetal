@@ -3,14 +3,20 @@
 namespace ofx {
 namespace Metal {
 
-void Device::setup()
+Device::Device()
 {
     device = MTLCreateSystemDefaultDevice();
 }
 
-id<MTLDevice> Device::getDevice()
+id<MTLDevice> Device::defaultDevice()
 {
-    return device;
+    return singleton().device;
+}
+
+Device& Device::singleton()
+{
+    static Device o;
+    return o;
 }
 
 } // Metal

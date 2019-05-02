@@ -12,9 +12,11 @@ class Device
     id<MTLDevice> device;
     
 public:
-    void setup();
+    static id<MTLDevice> defaultDevice();
     
-    id<MTLDevice> getDevice();
+private:
+    Device();
+    static Device& singleton();
 };
 
 } // Metal

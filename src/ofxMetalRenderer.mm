@@ -4,7 +4,7 @@
 namespace ofx {
 namespace Metal {
 
-void RendererBase::setup(Device *device, MTLPixelFormat mtlPixelFormat)
+void RendererBase::setup(MTLPixelFormat mtlPixelFormat)
 {
     
 }
