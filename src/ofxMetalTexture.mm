@@ -1,7 +1,7 @@
 #include "ofxMetalTexture.h"
-#include "ofxiOS.h"
 
 #if TARGET_OS_IOS
+#include "ofxiOS.h"
 #define GL_UNSIGNED_INT_8_8_8_8_REV 0x8367
 #endif
 
